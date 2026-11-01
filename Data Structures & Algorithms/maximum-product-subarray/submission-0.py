@@ -1,0 +1,24 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        res = float('-inf')
+        prod = 1
+
+        # Left to right
+        for n in nums:
+            prod *= n
+            res = max(res, prod)
+
+            if prod == 0:
+                prod = 1
+
+        prod = 1
+
+        # Right to left
+        for n in nums[::-1]:
+            prod *= n
+            res = max(res, prod)
+
+            if prod == 0:
+                prod = 1
+
+        return res
